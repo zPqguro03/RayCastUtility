@@ -8,6 +8,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.util.Vector;
+import org.bukkit.entity.Entity;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -159,7 +160,7 @@ public class RayCastUtility {
             for (Entity e : entityList) {
                 try {
                     Object nmsEntity = e.getClass().getMethod("getHandle").invoke(e);
-                    Object entityBoundingBox = nmsEntity.getClass().getMethod("getBoundingBox").invoke(nmsEntity);
+                    Object entityBoundingBox = nmsEntity.getBoundingBox();
                     BoundingBox entBB = new BoundingBox(entityBoundingBox);
                     if (entBB.isWithinBoundingBox(check)) {
                         results.add(e);
